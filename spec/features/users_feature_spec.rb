@@ -26,7 +26,6 @@ feature 'User can sign in & out' do
 
 		it 'should see link for "Sign out"' do
 			visit '/'
-			save_and_open_page
 			expect(page).to have_link('Sign out')
 		end
 
