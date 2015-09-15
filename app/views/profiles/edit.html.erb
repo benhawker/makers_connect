@@ -1,7 +1,10 @@
 Edit your profile and save
 
-<% form_for [@user, @profile] do |f| %>
-<%= f.label :name, "name" %>
-<%= f.text_field :name, placeholder: "Placeholder" %>
-<%= f.submit "Save" %>
+<%= form_for([@user, @profile], url: user_profile_path(@user.id)) do |f| %>
+<%= f.text_field :first_name, placeholder: "First Name" %>
+<%= f.text_field :last_name, placeholder: "Last Name" %>
+<%= f.text_field :cohort, placeholder: "Cohort" %><br>
+<%= image_tag @profile.avatar.url if @profile.avatar_stored? %>
+<%= f.file_field :avatar %><br>
+<%= f.submit "Update profile" %>
 <% end %>

@@ -1,3 +1,8 @@
 Your profile
 
-  <%= link_to "Edit profile", edit_user_profile_path(@user.id) %>
+<%= image_tag @profile.avatar.url if @profile.avatar.url %>
+<%= @profile.first_name %>
+<%= @profile.last_name %>
+<%= @profile.cohort %>
+
+<%= link_to "Edit profile", edit_user_profile_path(@user.id) %>

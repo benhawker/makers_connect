@@ -24,6 +24,7 @@ class ProfilesController < ApplicationController
 
   def show
   	@user = current_user if current_user
+    @profile = Profile.find_by(user_id: @user.id)
   end
 
  	def edit
@@ -31,6 +32,17 @@ class ProfilesController < ApplicationController
  		@profile = Profile.find_by(user_id: @user.id)
  	end
 
+  def update
+    @user = current_user if current_user
+    @profile = Profile.find_by(user_id: @user.id)
+    if @profile.update(profile_params)
+      flash[:notice] = "Profile updated successfully"
+      render 'index'
+    else
+      flash[:notice] = "Profile could not be updated"
+      render 'edit'
+    end
+  end
 
   def profile_params
     params.require(:profile).permit(:first_name, :last_name, :cohort, :avatar)
