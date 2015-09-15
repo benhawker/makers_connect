@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
-  root to: "home#index"
+  root to: "profiles#index"
+
   devise_for :users
+
+  resources :profiles, only: [:index]
+
+  resources :users, only: :none, shallow: true do
+    resource :profile
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
