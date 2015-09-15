@@ -1,0 +1,7 @@
+Edit your profile and save
+
+<% form_for [@user, @profile] do |f| %>
+<%= f.label :name, "name" %>
+<%= f.text_field :name, placeholder: "Placeholder" %>
+<%= f.submit "Save" %>
+<% end %>
