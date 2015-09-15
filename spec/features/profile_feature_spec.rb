@@ -36,6 +36,7 @@ feature 'User can manage profile page' do
       fill_in 'profile[first_name]', with: 'bob'
       fill_in 'profile[last_name]', with: 'jones'
       fill_in 'profile[cohort]', with: 'July 2015'
+      attach_file 'profile[avatar]', 'spec/fixtures/images/donald.png'
       click_button('Save profile')
       expect(page).to have_content("Profile created successfully")
     end

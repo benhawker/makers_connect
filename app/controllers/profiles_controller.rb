@@ -12,7 +12,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.new(user_id: current_user.id,
                             first_name: profile_params[:first_name],
                             last_name: profile_params[:last_name],
-                            cohort: profile_params[:cohort])
+                            cohort: profile_params[:cohort], avatar: profile_params[:avatar])
 
     if @profile.save
       flash[:notice] = "Profile created successfully"
@@ -33,7 +33,7 @@ class ProfilesController < ApplicationController
 
 
   def profile_params
-    params.require(:profile).permit(:first_name, :last_name, :cohort)
+    params.require(:profile).permit(:first_name, :last_name, :cohort, :avatar)
   end
 
 end
