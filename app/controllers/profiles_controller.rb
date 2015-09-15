@@ -1,6 +1,8 @@
 class ProfilesController < ApplicationController
+  
   def index
   	@user = current_user if current_user
+    @profiles = Profile.all
   end
 
   def new
@@ -12,8 +14,14 @@ class ProfilesController < ApplicationController
     @profile = Profile.new(user_id: current_user.id,
                             first_name: profile_params[:first_name],
                             last_name: profile_params[:last_name],
-                            cohort: profile_params[:cohort], avatar: profile_params[:avatar])
-
+                            cohort: profile_params[:cohort],
+                            dob: profile_params[:dob],
+                            city: profile_params[:city],
+                            country: profile_params[:country],
+                            personal_statement: profile_params[:personal_statement],
+                            employment_status: profile_params[:employment_status],
+                            startup_status: profile_params[:startup_status],
+                            avatar: profile_params[:avatar])
     if @profile.save
       flash[:notice] = "Profile created successfully"
       redirect_to profiles_path
@@ -45,7 +53,11 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:first_name, :last_name, :cohort, :avatar)
+    params.require(:profile).permit(:first_name, :last_name, 
+                                    :cohort, :avatar, :dob, :city,
+                                    :country, :personal_statement,
+                                    :employment_status, :startup_status
+                                    )
   end
 
 end

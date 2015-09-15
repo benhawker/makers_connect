@@ -6,9 +6,6 @@ feature 'User can manage profile page' do
       sign_up()
     end
 
-    it 'should see all user profiles' do
-      expect(page).to have_content("Profiles")
-    end
 
     it "can go to the create profile page" do
       click_link("Create profile")
@@ -39,8 +36,23 @@ feature 'User can manage profile page' do
       click_button('Update profile')
       expect(page).to have_content("Profile updated successfully")
     end
+  end
 
+    context "multiple users" do
 
-end
+      before do
+        sign_up()
+        create_profile()
+        sign_out
+        sign_up_user_2()
+        create_profile_2()
+      end
 
+      it 'should see all user profiles' do
+        expect(page).to have_content("Profiles")
+        expect(page).to have_content("Bob Jones")
+        expect(page).to have_content("Steve Smith")
+      end
+
+    end
 end

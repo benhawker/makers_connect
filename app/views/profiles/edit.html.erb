@@ -3,8 +3,16 @@ Edit your profile and save
 <%= form_for([@user, @profile], url: user_profile_path(@user.id)) do |f| %>
 <%= f.text_field :first_name, placeholder: "First Name" %>
 <%= f.text_field :last_name, placeholder: "Last Name" %>
-<%= f.text_field :cohort, placeholder: "Cohort" %><br>
-<%= image_tag @profile.avatar.url if @profile.avatar_stored? %>
+<%= f.text_field :cohort, placeholder: "Cohort" %>
+<%= image_tag @profile.avatar.url(:thumb) if @profile.avatar_stored? %>
 <%= f.file_field :avatar %><br>
+<%= f.date_field :dob %>
+<%= f.text_field :city, placeholder: "City" %>
+<%= f.text_field :country, placeholder: "Country" %>
+<%= f.text_area :personal_statement, placeholder: "Peronal Statement" %>
+<%= f.label "Employment Status" %> 
+<%= f.check_box :employment_status, placeholder: "Employment Status" %>
+<%= f.label "Startup Status" %> 
+<%= f.check_box :startup_status, placeholder: "Startup Status" %>
 <%= f.submit "Update profile" %>
 <% end %>
