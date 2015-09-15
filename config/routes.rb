@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  root to: "home#index"
+  root to: "profiles#index"
 
   devise_for :users
 
-  resources :users do
+  resources :profiles, only: [:index]
+
+  resources :users, only: :none, shallow: true do
     resource :profile
   end
 
