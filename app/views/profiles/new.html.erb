@@ -1,8 +1,8 @@
 Fill out your profile
 
-<%= form_for([@user, @profile], url: new_user_profile_path(@user.id)) do |f| %>
+<%= form_for([@user, @profile], url: user_profile_path(@user.id)) do |f| %>
 <%= f.text_field :first_name, placeholder: "First Name" %>
 <%= f.text_field :last_name, placeholder: "Last Name" %>
 <%= f.text_field :cohort, placeholder: "Cohort" %>
-<%= f.submit "Submit" %>
+<%= f.submit "Save profile" %>
 <% end %>

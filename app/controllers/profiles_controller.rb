@@ -8,6 +8,20 @@ class ProfilesController < ApplicationController
   	@profile = Profile.new
   end
 
+  def create
+    @profile = Profile.new(user_id: current_user.id,
+                            first_name: profile_params[:first_name],
+                            last_name: profile_params[:last_name],
+                            cohort: profile_params[:cohort])
+
+    if @profile.save
+      flash[:notice] = "Profile created successfully"
+      redirect_to profiles_path
+    else
+      render 'new'
+    end
+  end
+
   def show
   	@user = current_user if current_user
   end
@@ -16,5 +30,10 @@ class ProfilesController < ApplicationController
  		@user = current_user if current_user
  		@profile = Profile.find_by(user_id: @user.id)
  	end
+
+
+  def profile_params
+    params.require(:profile).permit(:first_name, :last_name, :cohort)
+  end
 
 end
