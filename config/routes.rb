@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :profiles, only: [:index]
 
   resources :users, only: :none, shallow: true do
-    resource :profile
+    resource :profile, :employers
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
