@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 	has_and_belongs_to_many :languages
   has_many :employers
+  has_one :profile
 
 
   # Include default devise modules. Others available are:
