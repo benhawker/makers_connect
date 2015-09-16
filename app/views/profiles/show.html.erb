@@ -1,16 +1,122 @@
-Your profile
 
-<%= image_tag @profile.avatar.url(:thumb) if @profile.avatar.url %>
-<%= @profile.first_name %>
-<%= @profile.last_name %>
-<%= @profile.cohort %>
-<%= @profile.dob %>
-<%= @profile.city %>
-<%= @profile.country %>
-<%= @profile.personal_statement %>
-<%= @profile.employment_status %>
-<%= @current_employer.company_name %>
-<%= @current_employer.role %>
-<%= @profile.startup_status %>
+<div class="container">
 
+<div class="row">
+<div class="col-md-2 col-md-push-10 center_align">
 <%= link_to "Edit profile", edit_user_profile_path(@user.id) %>
+</div>
+</div>
+
+<br>
+
+    <div class="col-md-1"> </div>
+
+    <div class="col xs-12 col-md-10">
+    <div class="card card-horizontal main_profile">
+        <div class="row profile_top">
+            <div class="col-md-3 col-sm-4 col-xs-4">
+                <div class="image profile_image">
+                    <!-- <img src="assets/img/ben.png" alt="..."/> -->
+                    
+                    <%= image_tag @profile.avatar.url(:thumb) if @profile.avatar.url %>                                
+                    <div class="filter filter-azure">
+                        <button type="button" class="btn btn-neutral btn-round">
+                            <i class="fa fa-user"></i> View Profile Picture
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                 <div class="content">
+                   <p class="category text-info">
+                      <%= @profile.cohort %> 
+                    </p>
+
+                    <a class="card-link" href="#">
+                        <h4 class="title"><%= @profile.first_name %> <%= @profile.last_name %></h4>
+                    </a>
+                    <a class="card-link" href="#">
+                        <p class="description">Current Position <span>@ Current Employer</span></p>
+                    </a>
+
+                     <div class="footer">
+                        <div class="stats">
+                            <a class="card-link" href="#">
+                               <i class="fa fa-male"></i> Github
+                            </a>
+                        </div>
+
+                        <div class="stats">
+                            <a class="card-link" href="#">
+                               <i class="fa fa-male"></i> Portfolio
+                            </a>
+                        </div>
+                  
+                        <div class="stats">
+                          <a class="card-link" href="#">
+                            <i class="fa fa-comments"></i> Linkedin
+                          </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-1"> </div>
+          <div class="col-xs-10 personal_statement">
+            <h4>My Languages</h4>
+            <p>Ruby, JavaScript etc.</p>
+          </div>
+          <div class="col-xs-1"> </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-1"> </div>
+          <div class="col-xs-10 personal_statement">
+
+          <div class="row">
+            <div class="col-xs-6"><h4>About Me</h4></div>
+            <div class="col-xs-6"><h4 class="profile_location"><%= @profile.city %>, <%= @profile.country %></h4></div>
+          </div>
+            <p><%= @profile.personal_statement %></p>
+          </div>
+          <div class="col-xs-1"> </div>
+        </div>
+
+
+
+         <div class="row">
+          <div class="col-xs-1"> </div>
+          <div class="col-xs-10 personal_statement">
+            <h4>My Projects</h4>
+            <div class="row">
+            <div class="col-xs-5"> <img class="image" src="#">
+
+            <div class="filter custom_filter">
+                        <button type="button" class="btn btn-neutral btn-round">
+                            <i class="fa fa-user"></i> View Project 1
+                        </button>
+                    </div></div>
+
+                      <div class="col-xs-5 col-md-push-2"> <img class="image" src="#.png">
+
+            <div class="filter custom_filter">
+                        <button type="button" class="btn btn-neutral btn-round">
+                            <i class="fa fa-user"></i> View Project 2
+                        </button>
+           
+              </div>
+          <div class="col-xs-1"> </div>
+        </div>
+      <div>
+    </div> <!-- end card -->
+
+
+  </div> <!-- col-6-md -->
+
+   <div class="col-md-1"> </div>
+
+</div> <!-- container -->
+

@@ -1,26 +1,109 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <title>MakersConnect</title>
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/png" href="assets/img/favicon.ico">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  
+  <title>Makers Connect</title>
+
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    
+    <link href="/css/bootstrap.css" rel="stylesheet" />
+    <link href="/css/gsdk.css" rel="stylesheet"/>
+    <link href="/css/demo.css" rel="stylesheet" /> 
+    <link href="/css/custom.css" rel="stylesheet" />     
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>  
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+    
 </head>
 <body>
+  <div class="wrapper">
+    <nav class="navbar navbar-ct-azure navbar-icons" role="navigation-demo">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Makers Connect</a>
+        </div>
+    
+    <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navigation-example-2">
+           
+          <ul class="nav navbar-nav navbar-right">
+        
+
+              <% if user_signed_in? %>
+
+                <li>
+                   <a href="#" >
+                        <i class="pe-7s-user"></i>
+                        <p><%= link_to "My profile", "/users/#{@user.id}/profile" %></p>
+                    </a>
+                </li>
+
+                <li>
+                   <a href="#" >
+                        <i class="pe-7s-user"></i>
+                        <p><%= link_to "Create profile", new_user_profile_path(@user.id) %></p>
+                    </a>
+                </li>
+
+                <li>
+                   <a href="#" >
+                        <i class="pe-7s-user"></i>
+                        <p><%= link_to "My work history", "/users/#{@user.id}/employers" %></p>
+                    </a>
+                </li>
+
+                  <li>
+                   <a href="#" >
+                        <i class="pe-7s-user"></i>
+                        <p>  <%= link_to "Sign out", destroy_user_session_path, method: :delete %></p>
+                    </a>
+                </li>
+
+                <% else %>
+
+                 <li>
+                   <a href="#" >
+                        <i class="pe-7s-user"></i>
+                        <p><%= link_to "Sign in", new_user_session_path %></p>
+                    </a>
+                </li>
+
+                <li>
+                   <a href="#" >
+                        <i class="pe-7s-user"></i>
+                        <p>  <%= link_to "Sign up", new_user_registration_path %></p>
+                    </a>
+                </li>
+
+                <% end %>
+           </ul>
+          
+        </div><!-- /.navbar-collapse -->
+
+      </div><!-- /.container-fluid -->
+    </nav> 
+<body>
+
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
-
-<section>
-<% if user_signed_in? %>
-  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-  <%= link_to "Create profile", new_user_profile_path(@user.id) %>
-  <%= link_to "My profile", "/users/#{@user.id}/profile" %>
-  <%= link_to "My work history", "/users/#{@user.id}/employers" %>
-<% else %>
-  <%= link_to "Sign in", new_user_session_path %>
-  <%= link_to "Sign up", new_user_registration_path %>
-<% end %>
-</section>
 
 
 <%= yield %>
