@@ -9,8 +9,8 @@ Your profile
 <%= @profile.country %>
 <%= @profile.personal_statement %>
 <%= @profile.employment_status %>
+<%= @current_employer.company_name %>
+<%= @current_employer.role %>
 <%= @profile.startup_status %>
 
 <%= link_to "Edit profile", edit_user_profile_path(@user.id) %>
-
-

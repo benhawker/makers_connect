@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  
+
   def index
   	@user = current_user if current_user
     @profiles = Profile.all
@@ -33,6 +33,7 @@ class ProfilesController < ApplicationController
   def show
   	@user = current_user if current_user
     @profile = Profile.find_by(user_id: @user.id)
+    @current_employer = @user.employers.first()
   end
 
  	def edit
@@ -53,7 +54,7 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:first_name, :last_name, 
+    params.require(:profile).permit(:first_name, :last_name,
                                     :cohort, :avatar, :dob, :city,
                                     :country, :personal_statement,
                                     :employment_status, :startup_status

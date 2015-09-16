@@ -9,5 +9,5 @@ class Profile < ActiveRecord::Base
   def avatar_stored?
     self.avatar ? true : false
   end
-  
+
 end

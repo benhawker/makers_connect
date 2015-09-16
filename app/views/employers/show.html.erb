@@ -1,12 +1,9 @@
 Work history
 
-<% if @employers!= nil %>
-  <% @employers.each do |employer| %>
-    <%= employer.company_name %>
-  <% end %>
- <% else %>
+<% if @employer!= nil %>
+  <%= @employer.company_name %>
+<% else %>
    No work history added yet
- <% end %>
+<% end %>
 
 <%= link_to "Add a work history", new_user_employers_path(@user.id) %>
-
