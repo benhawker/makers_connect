@@ -1,9 +1,6 @@
-<h1>Profiles</h1>
-
+<div class="container">
 <% if @profiles %>
-<ul>
   <% @profiles.each do |profile| %>
-  <li>
 
 <div class="col xs-12 col-md-6">
 <div class="card card-horizontal">
@@ -27,9 +24,13 @@
                 <a class="card-link" href="#">
                     <h4 class="title"><%= profile.first_name %> <%= profile.last_name %></h4>
                 </a>
-                <a class="card-link" href="#">
-                    <p class="description"> role @ <span>Current Employer</span></p>
-                </a>
+                  <a class="card-link" href="#">
+                <% if profile.user.employers.any? %>
+                  <p class="description"><%= profile.user.employers.first.role %> @ <span><%= profile.user.employers.first.company_name %></span></p>
+                <% else %>
+                  <p class="description">No employment history</p>
+                <% end %>
+                  </a>
 
                  <div class="footer">
                     <div class="stats">
@@ -56,16 +57,8 @@
     </div>
 </div> <!-- end card -->
 </div> <!-- col-6-md -->
-</li>
   <% end %>
-</ul>
+
 <% else %>
     <p>No profiles here.</p>
 <% end %>
-
-
-
-
-
-
-
