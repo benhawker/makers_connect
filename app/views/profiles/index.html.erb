@@ -1,13 +1,71 @@
 <h1>Profiles</h1>
 
 <% if @profiles %>
+<ul>
   <% @profiles.each do |profile| %>
-  <%= image_tag profile.avatar.url(:thumb) if profile.avatar.url %>
-  <p><%= profile.cohort %></p>
-  <p><%= profile.first_name %> <%= profile.last_name %></p>
-  <p><%= profile.city %></p>
-  <p><%= profile.country %></p>
+  <li>
+
+<div class="col xs-12 col-md-6">
+<div class="card card-horizontal">
+    <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-4">
+            <div class="image">
+              <%= image_tag profile.avatar.url(:thumb) if profile.avatar.url %>
+                <div class="filter filter-azure">
+                    <button type="button" class="btn btn-neutral btn-round">
+                        <i class="fa fa-user"></i> See More
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+             <div class="content">
+               <p class="category text-info">
+                  <%= profile.cohort %>
+                </p>
+
+                <a class="card-link" href="#">
+                    <h4 class="title"><%= profile.first_name %> <%= profile.last_name %></h4>
+                </a>
+                <a class="card-link" href="#">
+                    <p class="description"> role @ <span>Current Employer</span></p>
+                </a>
+
+                 <div class="footer">
+                    <div class="stats">
+                        <a class="card-link" href="#">
+                           <i class="fa fa-male"></i> Github
+                        </a>
+                    </div>
+
+                    <div class="stats">
+                        <a class="card-link" href="#">
+                           <i class="fa fa-male"></i> Portfolio
+                        </a>
+                    </div>
+
+                    <div class="stats">
+                      <a class="card-link" href="#">
+                        <i class="fa fa-comments"></i> Linkedin
+                      </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- end card -->
+</div> <!-- col-6-md -->
+</li>
   <% end %>
+</ul>
 <% else %>
-		<p>No profiles here.</p>
+    <p>No profiles here.</p>
 <% end %>
+
+
+
+
+
+
+
