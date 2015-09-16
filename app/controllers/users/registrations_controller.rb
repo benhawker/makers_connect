@@ -8,9 +8,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    
+    if UserMailer.welcome_email(@user).deliver
+      flash[:notice] = "email sent!"
+    end
+  end
 
   # GET /resource/edit
   # def edit
