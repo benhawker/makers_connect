@@ -5,18 +5,29 @@
 
 <%= form_for([@user, @profile], url: user_profile_path(@user.id)) do |f| %>
 <%= f.text_field :first_name, placeholder: "First Name" %>
+<br>
 <%= f.text_field :last_name, placeholder: "Last Name" %>
+<br>
 <%= f.text_field :cohort, placeholder: "Cohort" %>
+<br>
 <%= image_tag @profile.avatar.url(:thumb) if @profile.avatar_stored? %>
-<%= f.file_field :avatar %><br>
+<br>
+<%= f.file_field :avatar %>
+<br>
 <%= f.date_field :dob %>
+<br>
 <%= f.text_field :city, placeholder: "City" %>
+<br>
 <%= f.text_field :country, placeholder: "Country" %>
+<br>
 <%= f.text_area :personal_statement, placeholder: "Peronal Statement" %>
+<br>
 <%= f.label "Employment Status" %>
 <%= f.check_box :employment_status, placeholder: "Employment Status" %>
+<br>
 <%= f.label "Startup Status" %>
 <%= f.check_box :startup_status, placeholder: "Startup Status" %>
+<br>
 <%= f.submit "Update profile" %>
 <% end %>
 

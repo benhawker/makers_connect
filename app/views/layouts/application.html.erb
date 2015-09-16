@@ -50,47 +50,49 @@
               <% if user_signed_in? %>
 
                 <li>
-                   <a href="#" >
+                    <%= link_to user_profile_path(@user) do %>
                         <i class="pe-7s-user"></i>
-                        <p><%= link_to "My Profile", "/users/#{@user.id}/profile" %></p>
-                    </a>
+                        <p>My Profile</p>
+                    <% end %>
                 </li>
 
                 <li>
-                   <a href="#" >
+                    <%= link_to new_user_profile_path(@user) do %>
                         <i class="pe-7s-user"></i>
-                        <p><%= link_to "Create profile", new_user_profile_path(@user.id) %></p>
-                    </a>
+                        <p>Create Profile</p>
+                    <% end %>
                 </li>
 
                 <li>
-                   <a href="#" >
+                    <%= link_to new_user_employers_path(@user) do %>
                         <i class="pe-7s-user"></i>
-                        <p><%= link_to "My work history", "/users/#{@user.id}/employers" %></p>
-                    </a>
+                        <p>Add Work History</p>
+                    <% end %>
                 </li>
 
-                  <li>
-                   <a href="#" >
+
+                <li>
+                    <%= link_to destroy_user_session_path, method: :delete do %>
                         <i class="pe-7s-user"></i>
-                        <p>  <%= link_to "Sign out", destroy_user_session_path, method: :delete %></p>
-                    </a>
+                        <p>Sign Out</p>
+                    <% end %>
                 </li>
+
 
                 <% else %>
 
-                 <li>
-                   <a href="#" >
+                <li>
+                    <%= link_to new_user_session_path do %>
                         <i class="pe-7s-user"></i>
-                        <p><%= link_to "Sign in", new_user_session_path %></p>
-                    </a>
+                        <p>Sign In</p>
+                    <% end %>
                 </li>
 
                 <li>
-                   <a href="#" >
+                    <%= link_to new_user_registration_path do %>
                         <i class="pe-7s-user"></i>
-                        <p>  <%= link_to "Sign up", new_user_registration_path %></p>
-                    </a>
+                        <p>Sign Up</p>
+                    <% end %>
                 </li>
 
                 <% end %>
