@@ -3,14 +3,16 @@
   <% @profiles.each do |profile| %>
 
 <div class="col xs-12 col-md-6">
-<div class="card card-horizontal">
+<%= link_to user_profile_path(profile.user) do %>
+<div class="card card-horizontal max-height-150">
     <div class="row">
         <div class="col-md-4 col-sm-4 col-xs-4">
-            <div class="image">
-              <%= image_tag profile.avatar.url(:thumb) if profile.avatar.url %>
+            <div class="max-150-width no-overflow">
+                      <%= image_tag profile.avatar.url(:small), {class: 'min-150'} if profile.avatar.url %>
+        
                 <div class="filter filter-azure">
                     <button type="button" class="btn btn-neutral btn-round">
-                        <i class="fa fa-user"></i> See More
+                        <i class="fa fa-user"></i> View
                     </button>
                 </div>
             </div>
@@ -26,7 +28,7 @@
                 </a>
                   <a class="card-link" href="#">
                 <% if profile.user.employers.any? %>
-                  <p class="description"><%= profile.user.employers.first.role %> @ <span><%= profile.user.employers.first.company_name %></span></p>
+                  <p class="description"><%= profile.user.employers.last.role %> @ <span><%= profile.user.employers.last.company_name %></span></p>
                 <% else %>
                   <p class="description">No employment history</p>
                 <% end %>
@@ -56,7 +58,9 @@
         </div>
     </div>
 </div> <!-- end card -->
+          
 </div> <!-- col-6-md -->
+<% end %>
   <% end %>
 
 <% else %>

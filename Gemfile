@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'mail'
+gem 'seed_dump'
 
 gem 'paperclip'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

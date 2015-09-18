@@ -1,9 +1,10 @@
 
 <div class="container">
-
 <div class="row">
-<div class="col-md-2 col-md-push-10 center_align">
-<%= link_to "Edit profile", edit_user_profile_path(@user.id) %>
+<div class="col-xs-12 col-md-push-1">
+<% if (@profile.user == current_user ) %>
+<%= link_to "Edit profile", edit_user_profile_path(@user.id), {class: 'btn btn-info margin-left'} %>
+<% end %>
 </div>
 </div>
 
@@ -15,15 +16,11 @@
     <div class="card card-horizontal main_profile">
         <div class="row profile_top">
             <div class="col-md-3 col-sm-4 col-xs-4">
-                <div class="image profile_image">
+                <div class="max-150-width no-overflow">
                     <!-- <img src="assets/img/ben.png" alt="..."/> -->
                     
-                    <%= image_tag @profile.avatar.url(:thumb) if @profile.avatar.url %>                                
-                    <div class="filter filter-azure">
-                        <button type="button" class="btn btn-neutral btn-round">
-                            <i class="fa fa-user"></i> View Profile Picture
-                        </button>
-                    </div>
+                    <%= image_tag @profile.avatar.url(:medium), {class: 'img-responsive min-150'}  if @profile.avatar.url %>                                
+                  
                 </div>
             </div>
             <div class="col-md-8">
@@ -35,9 +32,14 @@
                     <a class="card-link" href="#">
                         <h4 class="title"><%= @profile.first_name %> <%= @profile.last_name %></h4>
                     </a>
+
+
+                    <% if @profile.user.employers.any? %>
                     <a class="card-link" href="#">
-                        <p class="description">Current Position <span>@ Current Employer</span></p>
-                    </a>
+                  <p class="description"><%= @profile.user.employers.last.role %> @ <span><%= @profile.user.employers.last.company_name %></span></p>
+                <% else %>
+                  <p class="description">No employment history</p>
+                <% end %>
 
                      <div class="footer">
                         <div class="stats">
@@ -65,7 +67,7 @@
 
         <div class="row">
           <div class="col-xs-1"> </div>
-          <div class="col-xs-10 personal_statement">
+          <div class="col-xs-10 languages">
             <h4>My Languages</h4>
             <p>Ruby, JavaScript etc.</p>
           </div>
@@ -86,31 +88,6 @@
         </div>
 
 
-
-         <div class="row">
-          <div class="col-xs-1"> </div>
-          <div class="col-xs-10 personal_statement">
-            <h4>My Projects</h4>
-            <div class="row">
-            <div class="col-xs-5"> <img class="image" src="#">
-
-            <div class="filter custom_filter">
-                        <button type="button" class="btn btn-neutral btn-round">
-                            <i class="fa fa-user"></i> View Project 1
-                        </button>
-                    </div></div>
-
-                      <div class="col-xs-5 col-md-push-2"> <img class="image" src="#.png">
-
-            <div class="filter custom_filter">
-                        <button type="button" class="btn btn-neutral btn-round">
-                            <i class="fa fa-user"></i> View Project 2
-                        </button>
-           
-              </div>
-          <div class="col-xs-1"> </div>
-        </div>
-      <div>
     </div> <!-- end card -->
 
 

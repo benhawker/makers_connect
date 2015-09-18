@@ -4,25 +4,24 @@
 }
 
 .card-horizontal {
-	max-height: 150px;
 	overflow: hidden;
 }
 
 .card-horizontal {
-	max-height: 150px;
+
 }
 
 .card {
-	max-height: 150px;
+
 }
 
 .card .image {
-	height: 150px;
 	border-radius: 6px;
+	min-width: 100%;
 }
 
-.card .profile_image {
-	height: 150px;
+.profile_image {
+	max-height: 150px;
 	border-radius: 0;
 }
 
@@ -39,7 +38,7 @@
 }
 
 .main_profile {
-	min-height: 1200px;
+	height: auto;
 }
 
 .navbar {
@@ -50,11 +49,17 @@
 	border-bottom: 1px solid grey;
 }
 
-.personal_statement {
+.languages {
 	text-align: justify;
 	border-bottom: 1px solid #2ca8ff;
 	padding-bottom: 20px;
 }
+
+.personal_statement {
+	text-align: justify;
+	padding-bottom: 20px;
+}
+
 
 .profile_location{
 	text-align: right;
@@ -85,3 +90,29 @@ h4 {
 .center_title {
 	text-align: center;
 }
+
+.margin-left {
+	margin-left: 15px;
+}
+
+.max-150 {
+	max-height: 150px;
+}
+
+
+.max-height-150 {
+	max-height: 150px;
+}
+
+.max-150-width {
+	max-width: 180px;
+}
+
+.no-overflow {
+	overflow: hidden;
+}
+
+.height-150 {
+	height: 150px !important;
+}
+

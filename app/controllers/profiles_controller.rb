@@ -32,8 +32,9 @@ class ProfilesController < ApplicationController
   end
 
   def show
-  	@user = current_user if current_user
-    @profile = Profile.find_by(user_id: @user.id)
+  	@user_id = params[:user_id]
+    @user = User.find(@user_id)
+    @profile = Profile.find_by(user_id: @user_id)
     @current_employer = @user.employers.first()
   end
 
@@ -47,7 +48,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.find_by(user_id: @user.id)
     if @profile.update(profile_params)
       flash[:notice] = "Profile updated successfully"
-      render 'index'
+      render 'show'
     else
       flash[:notice] = "Profile could not be updated"
       render 'edit'

@@ -4,31 +4,25 @@
     <div class="form-group">
 
 <%= form_for([@user, @profile], url: user_profile_path(@user.id)) do |f| %>
-<%= f.text_field :first_name, placeholder: "First Name" %>
+<%= f.text_field :first_name, placeholder: "First Name", class: 'form-control' %>
 <br>
-<%= f.text_field :last_name, placeholder: "Last Name" %>
+<%= f.text_field :last_name, placeholder: "Last Name", class: 'form-control' %>
 <br>
-<%= f.text_field :cohort, placeholder: "Cohort" %>
+<%= f.text_field :cohort, placeholder: "Cohort", class: 'form-control' %>
 <br>
 <%= image_tag @profile.avatar.url(:thumb) if @profile.avatar_stored? %>
 <br>
 <%= f.file_field :avatar %>
 <br>
-<%= f.date_field :dob %>
+<%= f.date_field :dob, class: 'form-control' %>
 <br>
-<%= f.text_field :city, placeholder: "City" %>
+<%= f.text_field :city, placeholder: "City", class: 'form-control' %>
 <br>
-<%= f.text_field :country, placeholder: "Country" %>
+<%= f.text_field :country, placeholder: "Country", class: 'form-control' %>
 <br>
-<%= f.text_area :personal_statement, placeholder: "Peronal Statement" %>
+<%= f.text_area :personal_statement, placeholder: "Peronal Statement", class: 'form-control height-150' %>
 <br>
-<%= f.label "Employment Status" %>
-<%= f.check_box :employment_status, placeholder: "Employment Status" %>
-<br>
-<%= f.label "Startup Status" %>
-<%= f.check_box :startup_status, placeholder: "Startup Status" %>
-<br>
-<%= f.submit "Update profile" %>
+<%= f.submit "Update profile", class: 'form-control btn btn-info btn-fill' %>
 <% end %>
 
 </div>
