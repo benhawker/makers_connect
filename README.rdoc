@@ -1,3 +1,5 @@
+My 2nd Rails app.
+
 A simple Rails application where users can sign up, create a profile, add a work history and some programming language skills.
 
 bundle
